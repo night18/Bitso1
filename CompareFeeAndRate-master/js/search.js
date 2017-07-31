@@ -43,6 +43,7 @@ $(document).ready(function(){
 		$("#nombre").val("");
 		$("#fee").val("");
 		$("#rate").val("");
+		$("#nombre").focus();
 
 		if(!name){
 			alert("Please input an option name");
@@ -165,6 +166,7 @@ $(document).ready(function(){
 
 	$("#search").click(function(){
 		$('html,body').animate({scrollTop:$("#table").offset().top},800);
+		$("#nombre").focus();
 	})
 });
 
