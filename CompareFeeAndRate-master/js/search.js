@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 		amount_send = $("#amount_send").val();
 		if(! $.isNumeric(amount_send) || amount_send <= 0){
-			$('html,body').animate({scrollTop:$("#banner").offset().top},800);
+			$('html,body').animate({scrollTop:$("#banner").offset().top-55},800); //[20170807 Chun] scoll to hgher place
 			alert("Please input a positive number in the 'sending amount' field before setting options");
 			return false;
 		}
@@ -38,12 +38,6 @@ $(document).ready(function(){
 		var name = $("#nombre").val();
 		var fee = $("#fee").val();
 		var rate = $("#rate").val();
-
-		//[20170731 Chun]clear the input text after click confirm button
-		$("#nombre").val("");
-		$("#fee").val("");
-		$("#rate").val("");
-		$("#nombre").focus();
 
 		if(!name){
 			alert("Please input an option name");
@@ -111,7 +105,13 @@ $(document).ready(function(){
 		for(var i = 1; i <= orderCard.length; i++){
 			container.mixItUp('insert',i ,orderCard[i-1][1], {filter: "all"});
 		}
-
+		//[20170731 Chun]clear the input text after click confirm button
+		$("#nombre").val("");
+		$("#fee").val("");
+		$("#rate").val("");
+		$("#nombre").focus();
+		$('#collapse2').collapse('hide');
+		$('#collapse3').collapse('hide');
 
 	}
 
@@ -164,8 +164,19 @@ $(document).ready(function(){
 		addcardListener();
 	});
 
+	$("#name_next").click(function(){
+		$('#collapse2').collapse('show');
+		$("#fee").focus();
+	});
+
+	$("#fee_next").click(function(){
+		$('#collapse3').collapse('show');
+		$("#rate").focus();
+	});
+
 	$("#search").click(function(){
 		$('html,body').animate({scrollTop:$("#table").offset().top},800);
+		$('#collapse1').collapse('show');
 		$("#nombre").focus();
 	})
 });
